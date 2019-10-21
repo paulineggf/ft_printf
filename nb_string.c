@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:49:03 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/21 20:10:19 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/21 21:24:13 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int		nb_string(const char *str, char **type)
 		if (!str[i] && i != 0)
 			break ;
 		i++;
+		//printf("str[i] : %c\n", str[i]);
 		while (str[i] && ft_charset(str[i], "cspdiuxX") == -1 && str[i] != '%')
 			i++;
+		//printf("str[i] : %c\n", str[i]);
 		if (!(*type = stock_type(str[i], *type)))
 			return (0);
 		count++;

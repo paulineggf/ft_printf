@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:55:12 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/21 20:09:26 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/21 21:34:24 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		main(int argc, char **argv)
 	if (nb_string("Hello", &type) == 1)
 	{
 		printf("nb_string 1 : OK\n");
+		printf("TEST1 ft_strnlen : %s\n", ft_strndup("Hello", ft_strnlen("Hello", '%')));
 		printf("type : %s\n", type);
 	}
 	else
@@ -35,6 +36,8 @@ int		main(int argc, char **argv)
 	if (nb_string("Hello %d\n %-0s", &type) == 4)
 	{
 		printf("nb_string 2 : OK\n");
+		printf("ft_strnlen : %d\n", ft_strnlen("Hello %d\n %-0s", '%'));
+		printf("TEST2 ft_strnlen : %s\n", ft_strndup("Hello %d\n %-0s", ft_strnlen("Hello %d\n %-0s", '%')));
 		printf("type : %s\n", type);
 	}
 	else
