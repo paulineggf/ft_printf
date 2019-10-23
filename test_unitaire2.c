@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 12:22:50 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:28:06 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 15:48:56 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int		main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	opt = init_lst("%-10-.20dHello%d %-0s");
-	if (opt)
+	opt = init_lst("-10-.20dHello%.20-10d %-10s");
+	while (opt)
 	{
 		printf("opt->str : %s\n", opt->str);
 		printf("opt->type : %c\n", opt->type);
@@ -28,6 +28,8 @@ int		main(int argc, char **argv)
 		printf("opt->point : %d\n",opt->point);
 		printf("opt->wildcard : %d\n", opt->wildcard);
 		printf("opt->nbr : %d\n", opt->nbr);
+		printf("\n");
+		opt = opt->next;
 	}
 	return (0);
 }

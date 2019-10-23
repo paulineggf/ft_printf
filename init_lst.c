@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 12:40:21 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:31:16 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 15:49:27 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,21 @@ void	init_struct(t_opt **new)
 t_opt	*cpy_string(const char *str, int *i)
 {
 	t_opt	*new;
+	int		j;
+	int		k;
 
-
+	j = *i;
+	k = 0;
 	while (str[*i] && str[*i] != '%')
+	{
 		(*i)++;
-	if (*i == 0)
+		k++;
+	}
+	if (*i == j)
 		return (NULL);
 	if (!(new = malloc(sizeof(t_opt))))
 		return (NULL);
-	new->str = ft_strndup(str, *i);
+	new->str = ft_strndup(&str[j], k);
 	init_struct(&new);
 	return (new);
 }
@@ -69,6 +75,7 @@ t_opt	*cpy_opt(const char *str, int *i)
 		}
 	}
 	new->type = str[*i];
+	(*i)++;
 	return (new);
 }
 
@@ -79,11 +86,14 @@ t_opt	*init_lst(const char *str)
 
 	i = 0;
 	opt = NULL;
-	ft_lstadd_back(&opt, cpy_string(&str[i], &i));
-	if (str[i] == '%')
+	while (str[i])
 	{
-		i++;
-		ft_lstadd_back(&opt, cpy_opt(str, &i));
+		ft_lstadd_back(&opt, cpy_string(str, &i));
+		if (str[i] == '%')
+		{
+			i++;
+			ft_lstadd_back(&opt, cpy_opt(str, &i));
+		}
 	}
 	return (opt);
 }
