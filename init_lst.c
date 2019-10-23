@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 12:40:21 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:49:27 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 16:03:35 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,20 @@ t_opt	*cpy_opt(const char *str, int *i)
 	{
 		if (str[*i] == '0' && *i == 0)
 			new->zero = ft_atoi(str, i);
-		else if (str[*i] == '-' && ft_charset(str[(*i) + 1], "0123456789") >= 0)
+		else if (str[*i] == '-'
+		&& ft_charset(str[(*i) + 1], "0123456789*") >= 0)
 			new->tiret = ft_atoi(str, i);
 		else if (str[*i] == '.')
 			new->point = ft_atoi(str, i);
-		else if (str[*i] == '*')
-			new->wildcard = 1;
-		else if (ft_charset(str[*i], "123456789") >= 0 && str[*i - 1] == '%')
+		else if (ft_charset(str[*i], "123456789") >= 0
+		&& (str[*i - 1] == '%' || str[*i - 1] == '*'))
 		{
 			(*i)--;
 			new->nbr = ft_atoi(str, i);
 		}
 		else if (str[(*i)++] == '%')
 		{
-			new->str = ft_strdup("%%");
+			new->str = ft_strdup("%");
 			return (new);
 		}
 	}
@@ -89,11 +89,8 @@ t_opt	*init_lst(const char *str)
 	while (str[i])
 	{
 		ft_lstadd_back(&opt, cpy_string(str, &i));
-		if (str[i] == '%')
-		{
-			i++;
+		if (str[i++] == '%')
 			ft_lstadd_back(&opt, cpy_opt(str, &i));
-		}
 	}
 	return (opt);
 }

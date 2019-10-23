@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 13:03:10 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:17:56 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 15:56:53 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int			ft_atoi(const char *s, int *i)
 
 	res = 0;
 	(*i)++;
+	if (s[*i] == '*')
+		return (-1);
 	while (s[*i] && ft_isspace(s[*i]))
 		(*i)++;
 	while (s[*i] == '+')

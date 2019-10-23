@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 12:22:50 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:48:56 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 16:02:52 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	opt = init_lst("-10-.20dHello%.20-10d %-10s");
+	opt = init_lst("-10-.20dHello%.*10dca va bien%-10s");
 	while (opt)
 	{
 		printf("opt->str : %s\n", opt->str);
