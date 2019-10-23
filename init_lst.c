@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nb_string.c                                        :+:      :+:    :+:   */
+/*   init_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 11:50:32 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 12:55:13 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/23 12:40:21 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/23 15:31:16 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	init_struct(t_opt **new)
 {
-	new->type = 0;
-	new->tiret = 0;
-	new->zero = 0;
-	new->point = 0;
-	new->wildcard = 0;
-	new->ord_nbr = 0;
-	new->nbr = 0;
-	new->next = NULL;
+	(*new)->type = 0;
+	(*new)->tiret = 0;
+	(*new)->zero = 0;
+	(*new)->point = 0;
+	(*new)->wildcard = 0;
+	(*new)->nbr = 0;
+	(*new)->next = NULL;
 }
 
 t_opt	*cpy_string(const char *str, int *i)
 {
 	t_opt	*new;
+
 
 	while (str[*i] && str[*i] != '%')
 		(*i)++;
@@ -41,51 +41,49 @@ t_opt	*cpy_string(const char *str, int *i)
 
 t_opt	*cpy_opt(const char *str, int *i)
 {
-	t_opt 	*new;
-	int		ord;
+	t_opt	*new;
 
 	if (!(new = malloc(sizeof(t_opt))))
 		return (NULL);
 	init_struct(&new);
 	new->str = NULL;
-	ord = 1;
-	(*i)++;
 	while (str[*i] && ft_charset(str[*i], "cspdiuxX") == -1)
 	{
-		if (str[*i] == '0' && !new->zero && !new->tiret)
-			new->zero = ord;
-		else if (str[*i] == '-' && !new->zero)
-			new->tiret = ord;
+		if (str[*i] == '0' && *i == 0)
+			new->zero = ft_atoi(str, i);
+		else if (str[*i] == '-' && ft_charset(str[(*i) + 1], "0123456789") >= 0)
+			new->tiret = ft_atoi(str, i);
 		else if (str[*i] == '.')
-			new->point = ord;
-		else if (str[*i] == '%')
-			if (ord == 1)
-				new->str = ft_strdup("%%");
+			new->point = ft_atoi(str, i);
 		else if (str[*i] == '*')
-			new->wildcard == ord;
-		else if (ft_charset(str[*i], "123456789") >= 0 && !new->ord_nbr)
+			new->wildcard = 1;
+		else if (ft_charset(str[*i], "123456789") >= 0 && str[*i - 1] == '%')
 		{
-			new->ord_nbr = ord;
-			new->nbr = ft_natoi(str[*i], i);
+			(*i)--;
+			new->nbr = ft_atoi(str, i);
 		}
-		ord++;
+		else if (str[(*i)++] == '%')
+		{
+			new->str = ft_strdup("%%");
+			return (new);
+		}
 	}
-	return ();
+	new->type = str[*i];
+	return (new);
 }
 
-t_opt	*nb_string(const char *str)
+t_opt	*init_lst(const char *str)
 {
 	t_opt	*opt;
 	int		i;
 
 	i = 0;
 	opt = NULL;
-	while (str[i])
+	ft_lstadd_back(&opt, cpy_string(&str[i], &i));
+	if (str[i] == '%')
 	{
-		ft_lstadd_back(&opt, cpy_string(&str[i], &i));
-		if (str[i] == '%')
-			ft_lstadd_back(&opt, cpy_opt(&str[i], &i));
-		return (opt);
+		i++;
+		ft_lstadd_back(&opt, cpy_opt(str, &i));
 	}
 	return (opt);
 }

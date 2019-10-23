@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnlencharset.c                                :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 21:17:54 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/21 21:20:27 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/22 12:45:52 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/22 12:50:06 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "ft_printf.h"
 
-size_t	ft_strnlen(const char *s, char const *set)
+t_opt	*ft_lstlast(t_opt *lst)
 {
-	int		i;
-
-	i = 0;
-	while (s[i] && ft_charset(s[i], set) == -1)
-		i++;
-	return (i);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

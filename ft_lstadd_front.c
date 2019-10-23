@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:30:49 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/22 12:30:35 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/22 12:31:38 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int		main(void)
+void	ft_lstadd_front(t_opt **alst, t_opt *new)
 {
-	int				i;
-	unsigned int	i2;
-
-	i = -4;
-	i2 = 11;
-	printf("%-10-.5dHello%d %-0s", 25, "coucou");
-	return (0);
+	if (!new || !alst)
+		return ;
+	new->next = *alst;
+	*alst = new;
 }

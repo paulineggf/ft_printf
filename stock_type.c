@@ -6,13 +6,13 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 19:36:37 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/21 20:10:14 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/22 11:48:12 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*stock_type(char c, char *type)
+t_opt	*stock_opt(char c, char *type)
 {
 	char	*new;
 	int		len;

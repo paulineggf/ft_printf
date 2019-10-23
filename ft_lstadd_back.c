@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:30:49 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/22 12:45:00 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/23 12:54:17 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int		main(void)
+void	ft_lstadd_back(t_opt **alst, t_opt *new)
 {
-	int				i;
-	unsigned int	i2;
-
-	i = -4;
-	i2 = 11;
-	printf("%-10-.5dHello%d %-0s", 25, "coucou");
-	return (0);
+	
+	if (!alst)
+		return ;
+	if (!*alst)
+		*alst = new;
+	else
+		ft_lstlast(*alst)->next = new;
 }

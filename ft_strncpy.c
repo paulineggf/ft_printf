@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 15:30:49 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/22 12:16:39 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/22 12:39:43 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include <stdio.h>
 
-int		main(void)
+char	*ft_strncpy(char *dest, const char *src, int n)
 {
-	int				i;
-	unsigned int	i2;
+	int	i;
 
-	i = -4;
-	i2 = 11;
-	printf("%-10-.5dHello%d %-0s", 25, "coucou");
-	return (0);
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

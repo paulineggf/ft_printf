@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   nb_string.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 21:14:57 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/22 12:40:17 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/21 17:49:03 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/22 11:49:51 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
-char	*ft_strndup(const char *s, int n)
+int		nb_string_old(const char *str, char **type)
 {
-	char	*s2;
 	int		i;
+	int		count;
 
 	i = 0;
-	if (!(s2 = (char*)malloc(sizeof(char) * (n + 1))))
-		return (NULL);
-	while (s[i] && i < n)
+	count = 0;
+	while (str[i])
 	{
-		s2[i] = s[i];
+		while (str[i] && str[i] != '%')
+			i++;
+		if (i != 0)
+			count++;
+		if (!str[i] && i != 0)
+			break ;
+		i++;
+		while (str[i] && ft_charset(str[i], "cspdiuxX") == -1 && str[i] != '%')
+			i++;
+		if (!(*type = stock_type(str[i], *type)))
+			return (0);
+		count++;
+		if (str[i] && !str[i + 1])
+			break ;
 		i++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (count);
 }
