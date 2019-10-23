@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:29:01 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/21 17:32:35 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:38:34 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	printargs(char *argv, ...)
 	while ((str = va_arg(ap, char *)) != NULL)
 	{
 		printf("str : %s\n", str);
-		va_copy(aq, ap);
+		//va_copy(aq, ap);
 		len += strlen(str);
 	}
 	va_end(ap);

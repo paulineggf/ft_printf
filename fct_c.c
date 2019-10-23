@@ -6,18 +6,19 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:40:37 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:30:45 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:45:47 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		fct_c(va_list ap, t_opt *opt)
+int		fct_c(va_list *ap, t_opt *opt)
 {
-	char	*c;
+	char	c;
 
-	printf("TEST 1\n");
-	c = va_arg(ap, char *);
-	printf("c : %s\n", c);
+	printf("TEST ccc\n");
+	c = va_arg(*ap, int);
+	opt->str = ft_strndup(&c, 1);
+	printf("c : %c\n", c);
 	return (1);
 }

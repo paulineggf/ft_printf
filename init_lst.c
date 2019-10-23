@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 12:40:21 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 16:06:50 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:45:59 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_struct(t_opt **new)
 {
-	(*new)->type = 0;
+	//(*new)->type = 0;
 	(*new)->tiret = 0;
 	(*new)->zero = 0;
 	(*new)->point = 0;
@@ -74,7 +74,7 @@ t_opt	*cpy_opt(const char *str, int *i)
 			return (new);
 		}
 	}
-	new->type = str[*i];
+	new->type = find_enum(str[*i]);
 	(*i)++;
 	return (new);
 }

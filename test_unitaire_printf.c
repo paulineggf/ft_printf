@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:43:22 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:33:47 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:36:21 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 int		main(void)
 {
 	int		ret;
+	char	c;
 
-	printf("%d\n", c);
-	ret = ft_printf("%c\n", 'a');
+	c = 'a';
+	ret = ft_printf("%c\n", c);
 	return (0);
 }

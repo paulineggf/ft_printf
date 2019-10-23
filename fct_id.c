@@ -6,13 +6,13 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:57:50 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:26:32 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:31:21 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		fct_id(va_list ap, t_opt *opt)
+int		fct_id(va_list *ap, t_opt *opt)
 {
 	(void)ap;
 	(void)opt;
