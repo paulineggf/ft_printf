@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_unitaire2.c                                   :+:      :+:    :+:   */
+/*   test_unitaire_init_lst.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 12:22:50 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 16:02:52 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/23 16:26:23 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	opt = init_lst("-10-.20dHello%.*10dca va bien%-10s");
+	opt = init_lst("%d");
 	while (opt)
 	{
 		printf("opt->str : %s\n", opt->str);

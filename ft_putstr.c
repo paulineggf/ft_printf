@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:23:45 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/23 18:50:13 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/23 18:50:51 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int		main(void)
+void			ft_putstr(char const *s)
 {
-	int				i;
-	unsigned int	i2;
-
-	i = -4;
-	i2 = 11;
-	printf("%d\n", printf("", 42));
-	return (0);
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
 }

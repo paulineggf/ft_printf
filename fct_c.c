@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   fct_c.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:23:45 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/23 18:40:37 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/23 19:30:45 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int		main(void)
+int		fct_c(va_list ap, t_opt *opt)
 {
-	int				i;
-	unsigned int	i2;
+	char	*c;
 
-	i = -4;
-	i2 = 11;
-	printf("%d\n", printf("", 42));
-	return (0);
+	printf("TEST 1\n");
+	c = va_arg(ap, char *);
+	printf("c : %s\n", c);
+	return (1);
 }

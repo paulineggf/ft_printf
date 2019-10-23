@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   test_unitaire_printf.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:23:45 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/23 18:43:22 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/23 19:33:47 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
 int		main(void)
 {
-	int				i;
-	unsigned int	i2;
+	int		ret;
 
-	i = -4;
-	i2 = 11;
-	printf("%d\n", printf("", 42));
+	printf("%d\n", c);
+	ret = ft_printf("%c\n", 'a');
 	return (0);
 }

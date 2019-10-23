@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   init_ptrf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:23:45 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/23 16:16:53 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/23 19:26:56 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int		main(void)
+void	init_ptrf(int (**f)(va_list ap, t_opt *opt))
 {
-	int				i;
-	unsigned int	i2;
-
-	i = -4;
-	i2 = 11;
-	printf("%d\n", printf("", 42));
-	return (0);
+	f[0] = fct_p;
+	f[1] = fct_c;
+	f[2] = fct_s;
+	f[3] = fct_id;
+	f[4] = fct_id;
+	f[5] = fct_u;
+	f[6] = fct_x;
+	f[7] = fct_x;
 }
