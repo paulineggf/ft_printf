@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 19:21:07 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/25 14:55:10 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/25 17:34:24 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_op
 	int			wildcard_point;
 	int			wildcard_tiret;
 	int			wildcard_nbr;
+	int			wildcard_zero;
 	int			nbr;
 }				t_opt;
 
