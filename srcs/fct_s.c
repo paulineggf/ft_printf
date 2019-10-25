@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:57:28 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/25 17:38:07 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/25 17:57:12 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,26 @@ int		fct_s(va_list *ap, t_list *lst)
 		}
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
+	if (((t_opt*)(lst->content))->nbr)
+	{
+		i = 0;
 
+		if (((t_opt*)(lst->content))->nbr > (int)ft_strlen(s))
+		{
+			if (!(((t_opt*)(lst->content))->str = ft_calloc((((t_opt*)(lst->content))->nbr + 1), 1)))
+				return (-1);
+			ft_strcpy(((t_opt*)(lst->content))->str + ((t_opt*)(lst->content))->nbr - ft_strlen(s), s);
+		}
+		else
+			((t_opt*)(lst->content))->str = ft_strdup(s);
+		while (((t_opt*)(lst->content))->nbr > (int)ft_strlen(s))
+		{
+			((t_opt*)(lst->content))->str[i] = ' ';
+			i++;
+			((t_opt*)(lst->content))->nbr--;
+		}
+		return (ft_strlen(((t_opt*)(lst->content))->str));
+	}
 	if (!(((t_opt*)(lst->content))->str = ft_strdup(s)))
 		return (-1);
 	return (ft_strlen(((t_opt*)(lst->content))->str));
