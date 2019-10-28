@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:58:13 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 19:09:50 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:31:53 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,18 +121,26 @@ int		fct_x(va_list *ap, t_list *lst)
 	if (((t_opt*)(lst->content))->tiret)
 	{
 		((t_opt*)(lst->content))->str =	ft_strrev_space_back(stock, ((t_opt*)(lst->content))->tiret);
+		if (((t_opt*)(lst->content))->type == 'X')
+		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
 	if (((t_opt*)(lst->content))->nbr)
 	{
 		((t_opt*)(lst->content))->str = ft_strrev_space_front(stock, ((t_opt*)(lst->content))->nbr);
+		if (((t_opt*)(lst->content))->type == 'X')
+		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
 	if (((t_opt*)(lst->content))->zero)
 	{
 		((t_opt*)(lst->content))->str =	ft_strrev_zero(stock, ((t_opt*)(lst->content))->zero);
+		if (((t_opt*)(lst->content))->type == 'X')
+		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
 	((t_opt*)(lst->content))->str = ft_strrev(stock);
+	if (((t_opt*)(lst->content))->type == 'X')
+		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
 	return (ft_strlen(((t_opt*)(lst->content))->str));
 }

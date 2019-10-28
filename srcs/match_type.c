@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 20:22:20 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/24 17:32:32 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:28:14 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int			match_type(char c)
 		return (5);
 	else if (c == 'x')
 		return (6);
-	else
+	else if (c == 'X')
 		return (7);
+	return (-1);
 }
