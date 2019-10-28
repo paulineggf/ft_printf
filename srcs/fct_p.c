@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:56:47 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 17:51:07 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:57:24 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ int		fct_p(va_list *ap, t_list *lst)
 	int				i;
 
 	i = 0;
-	tab = ft_strdup("0123456789abcdef");
+
+	check_wildcard(ap, &lst);
+	if (!(tab = ft_strdup("0123456789abcdef")))
+		return (0);
 	add = va_arg(*ap, unsigned long);
 	while (add > 0)
 	{
