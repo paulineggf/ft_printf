@@ -6,7 +6,7 @@
 #    By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 12:22:00 by pganglof          #+#    #+#              #
-#    Updated: 2019/10/25 11:55:35 by pganglof         ###   ########.fr        #
+#    Updated: 2019/10/28 16:24:10 by pganglof         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,10 @@ SRCS_NAME =	ft_printf.c			\
 			init_ptrf.c 		\
 			init_lst.c			\
 			ft_atoi_printf.c	\
+			fill_str_front.c	\
+			fill_str_back.c		\
+			fill_str_front_back.c	\
+			fill_str_back_front.c	\
 			check_wildcard.c
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))

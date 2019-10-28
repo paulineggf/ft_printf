@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 19:21:07 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/25 17:34:24 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:24:18 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int				fct_id(va_list *ap, t_list *lst);
 int				fct_u(va_list *ap, t_list *lst);
 int				fct_x(va_list *ap, t_list *lst);
 int				match_type(char c);
+int				fill_str_front(int nb, t_list *lst, char c, char *s);
+int				fill_str_back(int nb, t_list *lst, char c, char *s);
+int				fill_str_front_back(int tiret, int point, t_list *lst, char *s);
+int				fill_str_back_front(int tiret, int point, t_list *lst, char *s);
 void			init_ptrf(int (**f)(va_list *ap, t_list *lst));
 void			check_wildcard(va_list *ap, t_list **lst);
 t_list			*init_lst(char *str);
