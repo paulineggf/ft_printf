@@ -6,148 +6,129 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:56:47 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 12:14:19 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:48:13 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char	*ft_strrev_space_back(char *s, int nb)
+static char	*ft_space_back(char *s, int nb)
 {
 	char	*s2;
 	int		i;
 	int		j;
+	int		len_s;
 
 	i = 2;
-	j = ft_strlen(s) - 1;
-	if (!(s2 = malloc(sizeof(char) * (j + 4 + nb))))
+	j = 0;
+	len_s = ft_strlen(s);
+	if (!(s2 = malloc(sizeof(char) * (len_s + 2 + nb))))
 		return (NULL);
 	s2[0] = '0';
 	s2[1] = 'x';
-	while (j >= 0)
-		s2[i++] = s[j--];
+	while (s[j])
+		s2[i++] = s[j++];
 	while (i < nb)
 		s2[i++] = ' ';
 	s2[i] = 0;
 	return (s2);
 }
 
-static char	*ft_strrev_space_front(char *s, int nb)
+static char	*ft_space_front(char *s, int nb)
 {
 	char	*s2;
 	int		i;
 	int		j;
+	int		len_s;
 
 	i = 0;
-	j = ft_strlen(s) - 1;
-	if (nb > j)
+	j = 0;
+	len_s = ft_strlen(s);
+	if (nb > (len_s - 1))
 	{
-		if (!(s2 = malloc(sizeof(char) * (3 + nb))))
+		if (!(s2 = ft_calloc((3 + nb), 1)))
 			return (NULL);
 	}
 	else
 	{
-		if (!(s2 = malloc(sizeof(char) * (j + 4))))
+		if (!(s2 = ft_calloc((len_s + 3), 1)))
 			return (NULL);
 	}
-	while (i < (nb - (j + 3)))
+	while (i < (nb - (len_s + 2)))
 		s2[i++] = ' ';
 	s2[i++] = '0';
 	s2[i++] = 'x';
-	while (j >= 0)
-		s2[i++] = s[j--];
-	s2[i] = 0;
+	while (s[j])
+		s2[i++] = s[j++];
 	return (s2);
 }
 
-static char	*ft_strrev_zero(char *s, int nb)
+static char	*ft_point(char *s, int nb)
 {
 	char	*s2;
 	int		i;
 	int		j;
+	int		len_s;
 
 	i = 2;
-	j = ft_strlen(s) - 1;
-	if (nb > j)
+	j = 0;
+	len_s = ft_strlen(s);
+	if (nb > (len_s - 1))
 	{
-		if (!(s2 = malloc(sizeof(char) * (3 + nb))))
+		if (!(s2 = ft_calloc((3 + nb), 1)))
 			return (NULL);
 	}
 	else
 	{
-		if (!(s2 = malloc(sizeof(char) * (j + 4))))
+		if (!(s2 = ft_calloc((len_s + 3), 1)))
 			return (NULL);
 	}
 	s2[0] = '0';
 	s2[1] = 'x';
-	while (i < (nb - j - 1))
+	while ((i - 2) < (nb - len_s))
 		s2[i++] = '0';
-	while (j >= 0)
-		s2[i++] = s[j--];
-	s2[i] = 0;
+	while (s[j])
+		s2[i++] = s[j++];
 	return (s2);
 }
 
-static char	*ft_strrev(char *s)
+static char	*ft_0x(char *s)
 {
 	char	*s2;
 	int		i;
 	int		j;
 
 	i = 2;
-	j = ft_strlen(s) - 1;
-	if (!(s2 = malloc(sizeof(char) * (j + 4))))
+	j = 0;
+	if (!(s2 = malloc(sizeof(char) * (ft_strlen(s) + 3))))
 		return (NULL);
 	s2[0] = '0';
 	s2[1] = 'x';
-	while (j >= 0)
-		s2[i++] = s[j--];
+	while (s[j])
+		s2[i++] = s[j++];
 	s2[i] = 0;
 	return (s2);
 }
 
-int			fct_p(va_list *ap, t_list *lst)
+int			fct_p(va_list *ap, t_opt *opt)
 {
 	unsigned long	add;
-	char			stock[15];
-	char			*tab;
 	int				i;
 
 	i = 0;
-	check_wildcard(ap, &lst);
-	if (!(tab = ft_strdup("0123456789abcdef")))
-		return (0);
+	check_wildcard(ap, opt);
 	add = va_arg(*ap, unsigned long);
-	while (add > 0)
-	{
-		stock[i] = tab[add % 16];
-		add = add / 16;
-		i++;
-	}
-	stock[i] = 0;
-	i = 0;
-	if (((t_opt*)(lst->content))->tiret)
-	{
-		if (!(((t_opt*)(lst->content))->str =
-		ft_strrev_space_back(stock, ((t_opt*)(lst->content))->tiret)))
-			return (0);
-		return (ft_strlen(((t_opt*)(lst->content))->str));
-	}
-	if (((t_opt*)(lst->content))->nbr)
-	{
-		if (!(((t_opt*)(lst->content))->str =
-		ft_strrev_space_front(stock, ((t_opt*)(lst->content))->nbr)))
-			return (0);
-		return (ft_strlen(((t_opt*)(lst->content))->str));
-	}
-	if (((t_opt*)(lst->content))->zero)
-	{
-		if (!(((t_opt*)(lst->content))->str =
-		ft_strrev_zero(stock, ((t_opt*)(lst->content))->zero)))
-			return (0);
-		return (ft_strlen(((t_opt*)(lst->content))->str));
-	}
-	if (!(((t_opt*)(lst->content))->str = ft_strrev(stock)))
+	if (!(opt->str = convert_hex(add, "0123456789abcdef", 16)))
 		return (0);
-	return (ft_strlen(((t_opt*)(lst->content))->str));
+	if (opt->tiret)
+		opt->str = ft_space_back(opt->str, opt->tiret);
+	else if (opt->nbr)
+		opt->str = ft_space_front(opt->str, opt->nbr);
+	else if (opt->point)
+		opt->str = ft_point(opt->str, opt->point);
+	else if (!(opt->str = ft_0x(opt->str)))
+		return (0);
+	if (opt->str == NULL)
+		return (0);
+	return (ft_strlen(opt->str));
 }

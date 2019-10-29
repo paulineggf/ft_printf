@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:30 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/23 19:23:45 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/23 18:43:22 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/29 19:14:49 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../includes/ft_printf.h"
+
+void	test_p();
+void	test_c();
+void	test_id();
 
 int		main(void)
 {
-	int				i;
-	unsigned int	i2;
-
-	i = -4;
-	i2 = 11;
-	printf("%d\n", printf("", 42));
+	test_p();
+	//test_c();
+	//test_id();
 	return (0);
 }

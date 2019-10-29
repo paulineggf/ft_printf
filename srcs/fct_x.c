@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:58:13 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 14:15:19 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:58:49 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,39 +58,23 @@ static char	*ft_strrev_c_front(char *s, int nb, char c)
 	return (s2);
 }
 
-int		fct_x(va_list *ap, t_list *lst)
+int			fct_x(va_list *ap, t_opt *opt)
 {
 	unsigned int	nb;
-	int		i;
+	int				i;
 
 	i = 0;
-	check_wildcard(ap, &lst);
+	check_wildcard(ap, opt);
 	nb = va_arg(*ap, unsigned int);
-	if (!(((t_opt*)(lst->content))->str = convert_hex((unsigned long)nb, "0123456789abcdef", 16)))
+	if (!(opt->str = convert_hex((unsigned long)nb, "0123456789abcdef", 16)))
 		return (0);
-	if (((t_opt*)(lst->content))->tiret)
-	{
-		((t_opt*)(lst->content))->str = ft_strrev_space_back(((t_opt*)(lst->content))->str, ((t_opt*)(lst->content))->tiret);
-		if (((t_opt*)(lst->content))->type == 7)
-		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
-		return (ft_strlen(((t_opt*)(lst->content))->str));
-	}
-	if (((t_opt*)(lst->content))->nbr)
-	{
-		((t_opt*)(lst->content))->str = ft_strrev_c_front(((t_opt*)(lst->content))->str, ((t_opt*)(lst->content))->nbr, ' ');
-		if (((t_opt*)(lst->content))->type == 7)
-		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
-		return (ft_strlen(((t_opt*)(lst->content))->str));
-	}
-	if (((t_opt*)(lst->content))->zero)
-	{
-		((t_opt*)(lst->content))->str =	ft_strrev_c_front(((t_opt*)(lst->content))->str, ((t_opt*)(lst->content))->zero, '0');
-		if (((t_opt*)(lst->content))->type == 7)
-		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
-		return (ft_strlen(((t_opt*)(lst->content))->str));
-	}
-	if (((t_opt*)(lst->content))->type == 7)
-		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
-	return (ft_strlen(((t_opt*)(lst->content))->str));
-	return (1);
+	if (opt->tiret)
+		opt->str = ft_strrev_space_back(opt->str, opt->tiret);
+	else if (opt->nbr)
+		opt->str = ft_strrev_c_front(opt->str, opt->nbr, ' ');
+	else if (opt->zero)
+		opt->str = ft_strrev_c_front(opt->str, opt->zero, '0');
+	if (opt->type == 7)
+		opt->str = ft_strupcase(opt->str);
+	return (ft_strlen(opt->str));
 }

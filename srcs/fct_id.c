@@ -6,37 +6,34 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:57:50 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 12:10:41 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:48:19 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		fct_id(va_list *ap, t_list *lst)
+int		fct_id(va_list *ap, t_opt *opt)
 {
 	int		d;
 	char	*s;
 
-	check_wildcard(ap, &lst);
+	check_wildcard(ap, opt);
 	d = va_arg(*ap, int);
 	if (!(s = ft_itoa(d)))
 		return (0);
-	if (((t_opt*)(lst->content))->point && !((t_opt*)(lst->content))->tiret
-		&& !((t_opt*)(lst->content))->zero)
-		return (fill_str_back(((t_opt*)(lst->content))->point, lst, '0', s));
-	if (((t_opt*)(lst->content))->tiret && !((t_opt*)(lst->content))->point)
-		return (fill_str_front(((t_opt*)(lst->content))->tiret, lst, ' ', s));
-	if (((t_opt*)(lst->content))->nbr)
-		return (fill_str_back(((t_opt*)(lst->content))->nbr, lst, ' ', s));
-	if (((t_opt*)(lst->content))->zero && !((t_opt*)(lst->content))->point)
-		return (fill_str_back(((t_opt*)(lst->content))->zero, lst, '0', s));
-	if (((t_opt*)(lst->content))->tiret && ((t_opt*)(lst->content))->point)
-		return (fill_str_front_back(((t_opt*)(lst->content))->tiret,
-		((t_opt*)(lst->content))->point, lst, s));
-		if (((t_opt*)(lst->content))->zero && ((t_opt*)(lst->content))->point)
-		return (fill_str_back_front(((t_opt*)(lst->content))->zero,
-		((t_opt*)(lst->content))->point, lst, s));
-		if (!(((t_opt*)(lst->content))->str = ft_strdup(s)))
+	if (opt->point && !opt->tiret && !opt->zero)
+		return (fill_str_back(opt->point, opt, '0', s));
+	if (opt->tiret && !opt->point)
+		return (fill_str_front(opt->tiret, opt, ' ', s));
+	if (opt->nbr)
+		return (fill_str_back(opt->nbr, opt, ' ', s));
+	if (opt->zero && !opt->point)
+		return (fill_str_back(opt->zero, opt, '0', s));
+	if (opt->tiret && opt->point)
+		return (fill_str_front_back(opt->tiret, opt->point, opt, s));
+	if (opt->zero && opt->point)
+		return (fill_str_back_front(opt->zero, opt->point, opt, s));
+	if (!(opt->str = ft_strdup(s)))
 		return (0);
-	return (ft_strlen(((t_opt*)(lst->content))->str));
+	return (ft_strlen(opt->str));
 }

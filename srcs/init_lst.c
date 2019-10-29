@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 12:40:21 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 11:57:42 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 19:07:08 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void		compare_flags(t_opt *new, char *str, int *i)
 		fill_opt(&new->zero, &new->wildcard_zero, str, i);
 	else if (str[*i] == '-' && ft_charset(str[(*i) + 1], "0123456789*") >= 0)
 		fill_opt(&new->tiret, &new->wildcard_tiret, str, i);
-	else if (str[*i] == '.' && ft_charset(str[(*i) + 1], "0123456789*") >= 0)
+	else if (str[*i] == '.')
 		fill_opt(&new->point, &new->wildcard_point, str, i);
 	else if (ft_charset(str[*i], "123456789*") >= 0)
 	{

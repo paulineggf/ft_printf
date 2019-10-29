@@ -6,13 +6,13 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 16:16:53 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/24 17:32:32 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:44:07 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	init_ptrf(int (**f)(va_list *ap, t_list *lst))
+void	init_ptrf(int (**f)(va_list *ap, t_opt *opt))
 {
 	f[0] = fct_p;
 	f[1] = fct_c;
