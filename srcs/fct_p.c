@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:56:47 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 19:18:18 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:14:19 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static char	*ft_strrev(char *s)
 	return (s2);
 }
 
-int		fct_p(va_list *ap, t_list *lst)
+int			fct_p(va_list *ap, t_list *lst)
 {
 	unsigned long	add;
 	char			stock[15];
@@ -114,7 +114,6 @@ int		fct_p(va_list *ap, t_list *lst)
 	int				i;
 
 	i = 0;
-
 	check_wildcard(ap, &lst);
 	if (!(tab = ft_strdup("0123456789abcdef")))
 		return (0);
@@ -129,19 +128,26 @@ int		fct_p(va_list *ap, t_list *lst)
 	i = 0;
 	if (((t_opt*)(lst->content))->tiret)
 	{
-		((t_opt*)(lst->content))->str =	ft_strrev_space_back(stock, ((t_opt*)(lst->content))->tiret);
+		if (!(((t_opt*)(lst->content))->str =
+		ft_strrev_space_back(stock, ((t_opt*)(lst->content))->tiret)))
+			return (0);
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
 	if (((t_opt*)(lst->content))->nbr)
 	{
-		((t_opt*)(lst->content))->str = ft_strrev_space_front(stock, ((t_opt*)(lst->content))->nbr);
+		if (!(((t_opt*)(lst->content))->str =
+		ft_strrev_space_front(stock, ((t_opt*)(lst->content))->nbr)))
+			return (0);
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
 	if (((t_opt*)(lst->content))->zero)
 	{
-		((t_opt*)(lst->content))->str =	ft_strrev_zero(stock, ((t_opt*)(lst->content))->zero);
+		if (!(((t_opt*)(lst->content))->str =
+		ft_strrev_zero(stock, ((t_opt*)(lst->content))->zero)))
+			return (0);
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
-	((t_opt*)(lst->content))->str = ft_strrev(stock);
+	if (!(((t_opt*)(lst->content))->str = ft_strrev(stock)))
+		return (0);
 	return (ft_strlen(((t_opt*)(lst->content))->str));
 }

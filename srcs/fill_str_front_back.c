@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 13:35:19 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 15:56:41 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:09:39 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		fill_str_front_back(int tiret, int point, t_list *lst, char *s)
 	if (len_s > len)
 		len = len_s;
 	if (!(((t_opt*)(lst->content))->str = ft_calloc((len + 1), 1)))
-		return (-1);
+		return (0);
 	while (point > len_s)
 	{
 		((t_opt*)(lst->content))->str[i] = '0';

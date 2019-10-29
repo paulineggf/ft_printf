@@ -6,13 +6,13 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:58:13 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 19:31:53 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:56:36 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char	*ft_strrev_space_back(char *s, int nb)
+/*static char	*ft_strrev_space_back(char *s, int nb)
 {
 	char	*s2;
 	int		i;
@@ -96,29 +96,32 @@ static char	*ft_strrev(char *s)
 		s2[i++] = s[j--];
 	s2[i] = 0;
 	return (s2);
-}
+}*/
 
 int		fct_x(va_list *ap, t_list *lst)
 {
-	unsigned int		d;
-	char	*tab;
-	char	stock[1000];
+	unsigned int	nb;
+	/*char	*tab;*/
+	char	*stock;
 	int		i;
 
 	i = 0;
-	if (!(tab = ft_strdup("0123456789abcdef")))
-		return (0);
+	/*if (!(tab = ft_strdup("0123456789abcdef")))
+		return (0);*/
 	check_wildcard(ap, &lst);
-	d = va_arg(*ap, unsigned int);
-	while (d > 0)
+	nb = va_arg(*ap, unsigned int);
+	if (!(stock = convert_hex((unsigned long)nb, "0123456789abcdef", 16)))
+		return (0);
+	printf("stock : %s\n", stock);
+	/*while (d > 0)
 	{
 		stock[i] = tab[d % 16];
 		d = d / 16;
 		i++;
 	}
 	stock[i] = 0;
-	i = 0;
-	if (((t_opt*)(lst->content))->tiret)
+	i = 0;*/
+	/*if (((t_opt*)(lst->content))->tiret)
 	{
 		((t_opt*)(lst->content))->str =	ft_strrev_space_back(stock, ((t_opt*)(lst->content))->tiret);
 		if (((t_opt*)(lst->content))->type == 'X')
@@ -140,7 +143,8 @@ int		fct_x(va_list *ap, t_list *lst)
 		return (ft_strlen(((t_opt*)(lst->content))->str));
 	}
 	((t_opt*)(lst->content))->str = ft_strrev(stock);
-	if (((t_opt*)(lst->content))->type == 'X')
+	if (((t_opt*)(lst->content))->type == 7)
 		((t_opt*)(lst->content))->str = ft_strupcase(((t_opt*)(lst->content))->str);
-	return (ft_strlen(((t_opt*)(lst->content))->str));
+	return (ft_strlen(((t_opt*)(lst->content))->str));*/
+	return (1);
 }

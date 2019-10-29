@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   match_type.c                                       :+:      :+:    :+:   */
+/*   convert_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 20:22:20 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 11:57:53 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/29 12:17:48 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/29 12:57:54 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int			match_type(char c)
+char	*convert_hex(unsigned long nb, char *base, unsigned long len_base)
 {
-	if (c == 'p')
-		return (0);
-	else if (c == 'c')
-		return (1);
-	else if (c == 's')
-		return (2);
-	else if (c == 'd')
-		return (3);
-	else if (c == 'i')
-		return (4);
-	else if (c == 'u')
-		return (5);
-	else if (c == 'x')
-		return (6);
-	else if (c == 'X')
-		return (7);
-	return (-1);
+	char			*stock;
+	long			i;
+	unsigned long	res;
+	unsigned long	div;
+
+	i = 0;
+	div = 1;
+	res = 0;
+	if (!(stock = malloc(sizeof(char) * 33)))
+		return (NULL);
+	while ((nb / div) >= len_base)
+		div = div * len_base;
+	while (div > 0)
+	{
+		res = (nb / div) % len_base;
+		stock[i++] = base[res];
+		div = div / len_base;
+	}
+	stock[i] = 0;
+	return (stock);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_str.c                                         :+:      :+:    :+:   */
+/*   fill_str_back.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 12:00:49 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 13:07:36 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:06:25 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int		fill_str_back(int nb, t_list *lst, char c, char *s)
 	if (nb > len_s)
 	{
 		if (!(((t_opt*)(lst->content))->str = ft_calloc((nb + 1), 1)))
-			return (-1);
+			return (0);
 		ft_strcpy(((t_opt*)(lst->content))->str + nb - len_s, s);
 	}
 	else
-		((t_opt*)(lst->content))->str = ft_strdup(s);
+	{
+		if (!(((t_opt*)(lst->content))->str = ft_strdup(s)))
+			return (0);
+	}
 	while (nb > len_s)
 	{
 		((t_opt*)(lst->content))->str[i] = c;

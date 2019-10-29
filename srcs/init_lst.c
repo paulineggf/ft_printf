@@ -6,23 +6,13 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 12:40:21 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/25 17:34:08 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 11:57:42 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-/*void	init_struct(t_opt **new)
-{
-	(*new)->tiret = 0;
-	(*new)->tiret = 0;
-	(*new)->zero = 0;
-	(*new)->point = 0;
-	(*new)->wildcard = 0;
-	(*new)->nbr = 0;
-}*/
-
-t_opt	*cpy_string(char *str, int *i)
+static t_opt	*cpy_string(char *str, int *i)
 {
 	t_opt	*new;
 	int		j;
@@ -44,7 +34,43 @@ t_opt	*cpy_string(char *str, int *i)
 	return (new);
 }
 
-t_opt	*cpy_opt(char *str, int *i)
+static void		fill_opt(int *opt, int *wildcard_opt, char *str, int *i)
+{
+	*opt = ft_atoi_printf(str, i);
+	if (str[(*i) - 1] == '*')
+		wildcard_opt += 1;
+	while (ft_charset(str[*i], "0123456789*") >= 0)
+	{
+		*opt = ft_atoi_printf(str, i);
+		if (str[(*i) - 1] == '*')
+			wildcard_opt += 1;
+	}
+}
+
+static void		compare_flags(t_opt *new, char *str, int *i)
+{
+	if (str[*i] == '0' && str[*i - 1] == '%'
+	&& ft_charset(str[(*i) + 1], "0123456789*") >= 0)
+		fill_opt(&new->zero, &new->wildcard_zero, str, i);
+	else if (str[*i] == '-' && ft_charset(str[(*i) + 1], "0123456789*") >= 0)
+		fill_opt(&new->tiret, &new->wildcard_tiret, str, i);
+	else if (str[*i] == '.' && ft_charset(str[(*i) + 1], "0123456789*") >= 0)
+		fill_opt(&new->point, &new->wildcard_point, str, i);
+	else if (ft_charset(str[*i], "123456789*") >= 0)
+	{
+		new->nbr = ft_atoi_printf(str, i);
+		if (str[(*i) - 1] == '*')
+			new->wildcard_tiret += 1;
+		while (ft_charset(str[*i], "0123456789*") >= 0)
+		{
+			new->nbr = ft_atoi_printf(str, i);
+			if (str[(*i) - 1] == '*')
+				new->wildcard_nbr += 1;
+		}
+	}
+}
+
+static t_opt	*cpy_opt(char *str, int *i)
 {
 	t_opt	*new;
 
@@ -53,59 +79,11 @@ t_opt	*cpy_opt(char *str, int *i)
 	ft_bzero(new, sizeof(t_opt));
 	while (str[*i] && ft_charset(str[*i], "cspdiuxX") == -1)
 	{
-		if (str[*i] == '0' && str[*i - 1] == '%'
-		&& ft_charset(str[(*i) + 1], "0123456789*") >= 0)
-		{	
-			new->zero = ft_atoi_printf(str, i);
-			if (str[(*i) - 1] == '*')
-				new->wildcard_zero += 1;
-			while (ft_charset(str[*i], "0123456789*") >= 0)
-			{
-				new->zero = ft_atoi_printf(str, i);
-				if (str[(*i) - 1] == '*')
-					new->wildcard_zero += 1;
-			}
-		}
-		else if (str[*i] == '-'
-		&& ft_charset(str[(*i) + 1], "0123456789*") >= 0)
-		{
-			new->tiret = ft_atoi_printf(str, i);
-			if (str[(*i) - 1] == '*')
-				new->wildcard_tiret += 1;
-			while (ft_charset(str[*i], "0123456789*") >= 0)
-			{
-				new->tiret = ft_atoi_printf(str, i);
-				if (str[(*i) - 1] == '*')
-					new->wildcard_tiret += 1;
-			}
-		}
-		else if (str[*i] == '.'
-		&& ft_charset(str[(*i) + 1], "0123456789*") >= 0)
-		{
-			new->point = ft_atoi_printf(str, i);
-			if (str[(*i) - 1] == '*')
-				new->wildcard_point += 1;
-			while (ft_charset(str[*i], "0123456789*") >= 0)
-			{
-				new->point = ft_atoi_printf(str, i);
-				new->wildcard_point += 1;
-			}
-		}
-		else if (ft_charset(str[*i], "123456789*") >= 0)
-		{
-			new->nbr = ft_atoi_printf(str, i);
-			if (str[(*i) - 1] == '*')
-				new->wildcard_tiret += 1;
-			while (ft_charset(str[*i], "0123456789*") >= 0)
-			{
-				new->nbr = ft_atoi_printf(str, i);
-				if (str[(*i) - 1] == '*')
-					new->wildcard_nbr += 1;
-			}
-		}
-		else if (str[(*i)++] == '%')
+		compare_flags(new, str, i);
+		if (str[*i] == '%')
 		{
 			new->str = ft_strdup("%");
+			(*i)++;
 			return (new);
 		}
 	}
@@ -114,7 +92,7 @@ t_opt	*cpy_opt(char *str, int *i)
 	return (new);
 }
 
-t_list		*init_lst(char *str)
+t_list			*init_lst(char *str)
 {
 	t_list	*lst;
 	t_opt	*opt;

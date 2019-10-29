@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 19:21:07 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 16:24:18 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:58:14 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int				fill_str_back_front(int tiret, int point, t_list *lst, char *s);
 void			init_ptrf(int (**f)(va_list *ap, t_list *lst));
 void			check_wildcard(va_list *ap, t_list **lst);
 t_list			*init_lst(char *str);
+char			*convert_hex(unsigned long nb, char *base, unsigned long len_base);
 
 #endif

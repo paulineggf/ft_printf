@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 13:06:59 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/28 13:07:22 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:06:49 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int		fill_str_front(int nb, t_list *lst, char c, char *s)
 	if (nb > len_s)
 	{
 		if (!(((t_opt*)(lst->content))->str = ft_calloc((nb + 1), 1)))
-			return (-1);
+			return (0);
 		ft_strcpy(((t_opt*)(lst->content))->str, s);
 	}
 	else
-		((t_opt*)(lst->content))->str = ft_strdup(s);
+	{
+		if (!(((t_opt*)(lst->content))->str = ft_strdup(s)))
+			return (0);
+	}
 	while (nb > len_s)
 	{
 		((t_opt*)(lst->content))->str[i] = c;
