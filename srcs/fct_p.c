@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:56:47 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 16:48:13 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:12:19 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int			fct_p(va_list *ap, t_opt *opt)
 	int				i;
 
 	i = 0;
-	check_wildcard(ap, opt);
+	//check_wildcard(ap, opt);
 	add = va_arg(*ap, unsigned long);
 	if (!(opt->str = convert_hex(add, "0123456789abcdef", 16)))
 		return (0);

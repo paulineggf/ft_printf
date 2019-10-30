@@ -1,28 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   %id.c                                              :+:      :+:    :+:   */
+/*   %s.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 17:17:04 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/30 16:41:38 by pganglof         ###   ########.fr       */
+/*   Created: 2019/10/30 12:06:00 by pganglof          #+#    #+#             */
+/*   Updated: 2019/10/30 16:42:44 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	test_id()
+void	test_s()
 {
-	int 	d = 42;
+	char 	str[] = "coucou";
 
 	printf("\033[1;34m");
-	printf("--------------------------------------TEST %%ID--------------------------------------\n\n\n");
+	printf("--------------------------------------TEST %%S--------------------------------------\n\n\n");
 	printf("\033[0m");
 	printf("\n");
 
-	/*if ((ft_printf("START%dEND\n", d))
-	== printf("START%dEND\n", d))
+	/*if ((ft_printf("START%sEND\n", str))
+	== printf("START%sEND\n", str))
+	{
+		printf("\033[0;32m");
+		printf("RETURN OK\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+	else
+	{
+		printf("\033[0;31m");
+		printf("RETURN FALSE\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+
+	if ((ft_printf("START%sEND\n", NULL))
+	== printf("START%sEND\n", NULL))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -38,12 +54,12 @@ void	test_id()
 	}
 
 	printf("\033[0;34m");
-	printf("--------------------- NBR %%D -------------------\n\n\n");
+	printf("--------------------- NBR %%S -------------------\n\n\n");
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%20dEND\n", d))
-	== printf("START%20dEND\n", d))
+	if ((ft_printf("START%20sEND\n", str))
+	== printf("START%20sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -58,8 +74,40 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%1dEND\n", d))
-	== printf("START%1dEND\n", d))
+	if ((ft_printf("START%3sEND\n", str))
+	== printf("START%3sEND\n", str))
+	{
+		printf("\033[0;32m");
+		printf("RETURN OK\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+	else
+	{
+		printf("\033[0;31m");
+		printf("RETURN FALSE\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+
+	if ((ft_printf("START%20sEND\n", NULL))
+	== printf("START%20sEND\n", NULL))
+	{
+		printf("\033[0;32m");
+		printf("RETURN OK\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+	else
+	{
+		printf("\033[0;31m");
+		printf("RETURN FALSE\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+
+	if ((ft_printf("START%3sEND\n", NULL))
+	== printf("START%3sEND\n", NULL))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -75,12 +123,12 @@ void	test_id()
 	}
 
 	printf("\033[0;34m");
-	printf("------------------ TIRET %%D ------------------\n\n\n");
+	printf("------------------ TIRET %%S ------------------\n\n\n");
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%-20dEND\n", d))
-	== printf("START%-20dEND\n", d))
+	if ((ft_printf("START%-20sEND\n", str))
+	== printf("START%-20sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -95,8 +143,40 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%-1dEND\n", d))
-	== printf("START%-1dEND\n", d))
+	if ((ft_printf("START%-3sEND\n", str))
+	== printf("START%-3sEND\n", str))
+	{
+		printf("\033[0;32m");
+		printf("RETURN OK\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+	else
+	{
+		printf("\033[0;31m");
+		printf("RETURN FALSE\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+
+	if ((ft_printf("START%-20sEND\n", NULL))
+	== printf("START%-20sEND\n", NULL))
+	{
+		printf("\033[0;32m");
+		printf("RETURN OK\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+	else
+	{
+		printf("\033[0;31m");
+		printf("RETURN FALSE\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+
+	if ((ft_printf("START%-3sEND\n", NULL))
+	== printf("START%-3sEND\n", NULL))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -112,12 +192,12 @@ void	test_id()
 	}
 
 	printf("\033[0;34m");
-	printf("------------------ POINT %%D ------------------\n");
+	printf("--------------------- POINT %%S -------------------\n\n\n");
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%.10dEND\n", 42))
-	== printf("START%.10dEND\n", 42))
+	if ((ft_printf("START%.sEND\n", str))
+	== printf("START%.sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -132,8 +212,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%.dEND\n", 42))
-	== printf("START%.dEND\n", 42))
+	if ((ft_printf("START%.2sEND\n", str))
+	== printf("START%.2sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -148,8 +228,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%.dEND\n", 0))
-	== printf("START%.dEND\n", 0))
+	if ((ft_printf("START%.20sEND\n", str))
+	== printf("START%.20sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -164,8 +244,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%.010dEND\n", 0))
-	== printf("START%.010dEND\n", 0))
+	if ((ft_printf("START%.sEND\n", NULL))
+	== printf("START%.sEND\n", NULL))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -180,8 +260,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%.000dEND\n", 0))
-	== printf("START%.000dEND\n", 0))
+	if ((ft_printf("START%.2sEND\n", NULL))
+	== printf("START%.2sEND\n", NULL))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -194,15 +274,16 @@ void	test_id()
 		printf("RETURN FALSE\n\n\n");
 		printf("\033[0m");
 		printf("\n");
-	}*/
+	}
+
 
 	printf("\033[0;34m");
-	printf("---------------- WILDCARD %%D -----------------\n");
+	printf("------------- TIRET + POINT %%S --------------\n");
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%*dEND\n", 20, d))
-	== printf("START%*dEND\n", 20, d))
+	if ((ft_printf("START%-10.5sEND\n", str))
+	== printf("START%-10.5sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -217,8 +298,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%*dEND\n", 1, d))
-	== printf("START%*dEND\n", 1, d))
+	if ((ft_printf("START%-5.10sEND\n", str))
+	== printf("START%-5.10sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -233,8 +314,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%*dEND\n", 1, 0))
-	== printf("START%*dEND\n", 1, 0))
+	if ((ft_printf("START%-1.2sEND\n", str))
+	== printf("START%-1.2sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -249,8 +330,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%*dEND\n", 20, 0))
-	== printf("START%*dEND\n", 20, 0))
+	if ((ft_printf("START%-10.1sEND\n", str))
+	== printf("START%-10.1sEND\n", str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -265,29 +346,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	/*printf("\033[0;34m");
-	printf("------------------ ZERO %%D -------------------\n");
-	printf("\033[0m");
-	printf("\n");
-
-	if ((ft_printf("START%010dEND\n", d))
-	== printf("START%010dEND\n", d))
-	{
-		printf("\033[0;32m");
-		printf("RETURN OK\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("RETURN FALSE\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-
-	if ((ft_printf("START%01dEND\n", d))
-	== printf("START%01dEND\n", d))
+	if ((ft_printf("START%-10.sEND\n", NULL))
+	== printf("START%-10.sEND\n", NULL))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -303,97 +363,22 @@ void	test_id()
 	}
 
 	printf("\033[0;34m");
-	printf("------------- TIRET + POINT %%D --------------\n");
+	printf("------------- ZERO + POINT %%S --------------\n");
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%-10.5dEND\n", d))
-	== printf("START%-10.5dEND\n", d))
-	{
-		printf("\033[0;32m");
-		printf("RETURN OK\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("RETURN FALSE\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-
-	if ((ft_printf("START%-5.10dEND\n", d))
-	== printf("START%-5.10dEND\n", d))
-	{
-		printf("\033[0;32m");
-		printf("RETURN OK\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("RETURN FALSE\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-
-	if ((ft_printf("START%-1.2dEND\n", d))
-	== printf("START%-1.2dEND\n", d))
-	{
-		printf("\033[0;32m");
-		printf("RETURN OK\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("RETURN FALSE\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-
-	if ((ft_printf("START%-10.1dEND\n", d))
-	== printf("START%-10.1dEND\n", d))
-	{
-		printf("\033[0;32m");
-		printf("RETURN OK\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("RETURN FALSE\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-
-	if ((ft_printf("START%-10.dEND\n", 0))
-	== printf("START%-10.dEND\n", 0))
-	{
-		printf("\033[0;32m");
-		printf("RETURN OK\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("RETURN FALSE\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
+	printf("\033[1;35m");
+	printf("ZERO + POINT : WARNING\n\n\n");
+	printf("\033[0m");
+	printf("\n");*/
 
 	printf("\033[0;34m");
-	printf("------------- ZERO + POINT %%D --------------\n");
+	printf("---------------- WILDCARD %%S -----------------\n");
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%010.20dEND\n", d))
-	== printf("START%010.20dEND\n", d))
+	if ((ft_printf("START%*sEND\n", 20, str))
+	== printf("START%*sEND\n", 20, str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -408,8 +393,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%010.1dEND\n", d))
-	== printf("START%010.1dEND\n", d))
+	if ((ft_printf("START%*sEND\n", 1, str))
+	== printf("START%*sEND\n", 1, str))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -424,8 +409,8 @@ void	test_id()
 		printf("\n");
 	}
 
-	if ((ft_printf("START%010.dEND\n", 0))
-	== printf("START%010.dEND\n", 0))
+	if ((ft_printf("START%*sEND\n", 1, NULL))
+	== printf("START%*sEND\n", 1, NULL))
 	{
 		printf("\033[0;32m");
 		printf("RETURN OK\n\n\n");
@@ -438,5 +423,21 @@ void	test_id()
 		printf("RETURN FALSE\n\n\n");
 		printf("\033[0m");
 		printf("\n");
-	}*/
+	}
+
+	if ((ft_printf("START%*sEND\n", 20, NULL))
+	== printf("START%*sEND\n", 20, NULL))
+	{
+		printf("\033[0;32m");
+		printf("RETURN OK\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
+	else
+	{
+		printf("\033[0;31m");
+		printf("RETURN FALSE\n\n\n");
+		printf("\033[0m");
+		printf("\n");
+	}
 }

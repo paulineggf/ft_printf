@@ -6,11 +6,10 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 13:03:10 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 18:58:40 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:13:19 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/ft_printf.h"
 
 int			ft_atoi_printf(char *s, int *i)

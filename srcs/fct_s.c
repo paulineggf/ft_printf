@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:57:28 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 14:49:36 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/30 12:19:29 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@ int		fct_s(va_list *ap, t_opt *opt)
 
 	check_wildcard(ap, opt);
 	s = va_arg(*ap, char *);
-	if (opt->point)
+	if (s == NULL)
+		if (!(s = ft_strdup("(null)")))
+			return (0);
+	if (opt->point == -1)
+		if (!(s = ft_strdup("")))
+			return (0);
+	if (opt->point && opt->point != -1)
 		if (!(s = ft_strndup(s, opt->point)))
 			return (0);
 	if (opt->tiret)

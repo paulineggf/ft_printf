@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:06:35 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 19:15:23 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:14:23 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	test_c()
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%cEND\n", c))
+	/*if ((ft_printf("START%cEND\n", c))
 	== printf("START%cEND\n", c))
 	{
 		printf("\033[0;32m");
@@ -119,7 +119,7 @@ void	test_c()
 	printf("\033[1;35m");
 	printf("POINT SEUL : WARNING\n\n\n");
 	printf("\033[0m");
-	printf("\n");
+	printf("\n");*/
 
 	printf("\033[0;34m");
 	printf("---------------- WILDCARD %%C -----------------\n");
@@ -158,7 +158,7 @@ void	test_c()
 		printf("\n");
 	}
 
-	printf("\033[0;34m");
+	/*printf("\033[0;34m");
 	printf("------------------ ZERO %%C -------------------\n");
 	printf("\033[0m");
 	printf("\n");
@@ -166,6 +166,5 @@ void	test_c()
 	printf("\033[1;35m");
 	printf("ZERO : WARNING\n\n\n");
 	printf("\033[0m");
-	printf("\n");
-
+	printf("\n");*/
 }

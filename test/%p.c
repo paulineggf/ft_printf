@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:44:21 by pganglof          #+#    #+#             */
-/*   Updated: 2019/10/29 19:14:41 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:42:08 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	test_p()
 	printf("\033[0m");
 	printf("\n");
 
-	if ((ft_printf("START%pEND\n", str))
+	/*if ((ft_printf("START%pEND\n", str))
 	== printf("START%pEND\n", str))
 	{
 		printf("\033[0;32m");
@@ -135,7 +135,7 @@ void	test_p()
 	printf("\033[1;35m");
 	printf("POINT SEUL : WARNING\n\n\n");
 	printf("\033[0m");
-	printf("\n");
+	printf("\n");*/
 
 
 
@@ -176,7 +176,7 @@ void	test_p()
 		printf("\n");
 	}
 
-	printf("\033[0;34m");
+	/*printf("\033[0;34m");
 	printf("------------------ ZERO %%P -------------------\n");
 	printf("\033[0m");
 	printf("\n");
@@ -184,23 +184,6 @@ void	test_p()
 	printf("\033[1;35m");
 	printf("ZERO : WARNING\n\n\n");
 	printf("\033[0m");
-	printf("\n");
-
-	/*printf("START%.2sEND\n", NULL);
-	if ((ft_printf("START%.2sEND\n", NULL))
-	== printf("START%.2sEND\n", NULL))
-	{
-		printf("\033[0;32m");
-		printf("RETURN OK\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("RETURN FALSE\n\n\n");
-		printf("\033[0m");
-		printf("\n");
-	}*/
+	printf("\n");*/
 }
 
