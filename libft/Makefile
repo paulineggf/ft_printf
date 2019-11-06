@@ -6,7 +6,7 @@
 #    By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 12:22:08 by pganglof          #+#    #+#              #
-#    Updated: 2019/11/06 12:44:34 by pganglof         ###   ########.fr        #
+#    Updated: 2019/11/06 14:37:53 by pganglof         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ NAME = libft.a
 RM = rm -f
 AR = ar
 AFLAGS = -sucr
-CFLAGS += -Wall -Wextra -Werror -g -I $(HEADERS)
+CFLAGS += -Wall -Wextra -Werror -I $(HEADERS)
 
 all: $(NAME)
 

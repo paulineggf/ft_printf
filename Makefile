@@ -6,7 +6,7 @@
 #    By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 12:22:00 by pganglof          #+#    #+#              #
-#    Updated: 2019/11/06 12:44:31 by pganglof         ###   ########.fr        #
+#    Updated: 2019/11/06 14:43:52 by pganglof         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ RM = rm -f
 AR = ar
 AFLAGS = -rc
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror -g -c -I $(HEADERS)
+CFLAGS += -Wall -Wextra -Werror -c -I $(HEADERS)
 
 all: $(NAME)
 

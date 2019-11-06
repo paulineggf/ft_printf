@@ -6,7 +6,7 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 21:26:00 by pganglof          #+#    #+#             */
-/*   Updated: 2019/11/05 14:33:56 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/11/06 15:44:30 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		boucle_wildcard(va_list *ap, t_opt *opt)
 	{
 		opt->point = va_arg(*ap, int);
 		if (opt->point < 0)
-			opt->point *= -1;
+			opt->point = 0;
 		opt->wildcard_point--;
 	}
 }
@@ -36,14 +36,20 @@ void			u_check_wildcard(va_list *ap, t_opt *opt)
 	{
 		opt->zero = va_arg(*ap, int);
 		if (opt->zero < 0)
-			opt->zero *= -1;
+		{
+			opt->tiret = opt->zero * -1;
+			opt->zero = 0;
+		}
 		opt->wildcard_zero--;
 	}
 	while (opt->wildcard_nbr > 0)
 	{
 		opt->nbr = va_arg(*ap, int);
 		if (opt->nbr < 0)
-			opt->nbr *= -1;
+		{
+			opt->tiret = opt->nbr * -1;
+			opt->nbr = 0;
+		}
 		opt->wildcard_nbr--;
 	}
 	boucle_wildcard(ap, opt);

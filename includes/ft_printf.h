@@ -6,13 +6,12 @@
 /*   By: pganglof <pganglof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 19:21:07 by pganglof          #+#    #+#             */
-/*   Updated: 2019/11/05 18:49:15 by pganglof         ###   ########.fr       */
+/*   Updated: 2019/11/06 15:45:12 by pganglof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
